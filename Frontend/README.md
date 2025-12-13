@@ -34,6 +34,9 @@ Aplikacja podzielona jest na dwa główne katalogi:
 
 ## Wygląd i Design
 
+<img width="1902" height="904" alt="o9xF9Hp - Imgur" src="https://github.com/user-attachments/assets/c1251273-6e9e-410f-b0d8-7c64b16daee6" />
+
+
 Strona została zaprojektowana w nowoczesnym, **minimalistycznym stylu**. Głównym celem było stworzenie przejrzystego interfejsu, w którym użytkownik się nie gubi.
 
 *   **Kolorystyka:** Oparta na kontraście czerni i bieli, co nadaje aplikacji elegancki i profesjonalny charakter. Ciemne elementy na jasnym tle są bardzo czytelne.
