@@ -1,3 +1,7 @@
+<img width="1792" height="592" alt="rr1pYhB - Imgur" src="https://github.com/user-attachments/assets/69ee0541-6bd4-4fa4-9caa-3479832bdf68" />
+
+
+
 
 ## MaxHire – Portal Ogłoszeniowy IT
 
