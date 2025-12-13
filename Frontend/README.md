@@ -34,10 +34,13 @@ Aplikacja podzielona jest na dwa główne katalogi:
 
 ## Wygląd i Design
 
+
+# Logowanie
+
 <img width="1000" height="904" alt="K8BnYsq - Imgur" src="https://github.com/user-attachments/assets/532ab3a1-440b-48c7-a686-f62eb741c696" />
 
 
-
+# Strona Główna
 
 <img width="1000" height="904" alt="o9xF9Hp - Imgur" src="https://github.com/user-attachments/assets/c1251273-6e9e-410f-b0d8-7c64b16daee6" />
 
