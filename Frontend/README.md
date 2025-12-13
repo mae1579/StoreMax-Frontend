@@ -1,16 +1,40 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## MaxHire – Portal Ogłoszeniowy IT
 
-Currently, two official plugins are available:
+MaxHire to wszechstronna platforma dedykowana branży IT, stworzona w celu optymalizacji procesów łączących technologię z biznesem. Projekt działa jako centralny ekosystem, który usprawnia nawiązywanie współpracy, kładąc nacisk na efektywną realizację przedsięwzięć.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Kluczowym wyróżnikiem platformy jest **elastyczny model dwustronnej publikacji ogłoszeń**. System umożliwia firmom skuteczne zlecanie projektów i poszukiwanie wykonawców, a specjalistom – aktywne oferowanie swoich usług. Dzięki temu MaxHire skraca dystans między zleceniodawcą a realizatorem, zapewniając szybkie dopasowanie kompetencji do konkretnych wyzwań i potrzeb projektowych.
 
-## React Compiler
+## Struktura Projektu
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Aplikacja podzielona jest na dwa główne katalogi:
 
-## Expanding the ESLint configuration
+*   **`./frontend`**
+    *   Aplikacja kliencka (SPA) zbudowana w **React**.
+    *   Stylizacja przy użyciu **Tailwind CSS** dla szybkiego i responsywnego designu.
+    *   Odpowiada za warstwę wizualną i komunikację z API.
+*   **`./backend`**
+    *   Serwer REST API oparty na **Node.js** i **Express.js**.
+    *   Wykorzystuje relacyjną bazę danych **MySQL** do bezpiecznego przechowywania ogłoszeń i użytkowników.
+    *   Zarządza logiką biznesową, autoryzacją i przetwarzaniem danych.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Kluczowe Endpointy API
+
+| Metoda | Ścieżka | Opis |
+|---|---|---|
+| `GET` | `/api/offers` | Pobiera listę wszystkich dostępnych ogłoszeń. |
+| `POST` | `/api/auth/register` | Rejestracja nowego użytkownika w bazie. |
+| `POST` | `/api/auth/login` | Logowanie i generowanie tokena JWT. |
+| `POST` | `/api/offers` | Dodawanie nowego ogłoszenia (wymaga zalogowania). |
+| `DELETE`| `/api/offers/:id` | Usuwanie ogłoszenia z bazy danych. |
+
+## Wygląd i Design
+
+Strona została zaprojektowana w nowoczesnym, **minimalistycznym stylu**. Głównym celem było stworzenie przejrzystego interfejsu, w którym użytkownik się nie gubi.
+
+*   **Kolorystyka:** Oparta na kontraście czerni i bieli, co nadaje aplikacji elegancki i profesjonalny charakter. Ciemne elementy na jasnym tle są bardzo czytelne.
+*   **Tło:** Aby ożywić prosty design, zastosowano delikatną, fioletową poświatę (gradient) w tle, która dodaje głębi, ale nie rozprasza uwagi.
+
+## Licencja
+
+Projekt jest objęty licencją **GNU GPL v3.0**. Pełna treść licencji znajduje się w pliku `LICENSE`.
