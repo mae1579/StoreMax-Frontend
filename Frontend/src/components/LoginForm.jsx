@@ -4,18 +4,55 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 const LoginForm = () => {
+  const { VITE_BACKEND_URL, VITE_BACKEND_PORT } = import.meta.env;
+  const BACKEND_ADDRESS = `${VITE_BACKEND_URL}:${VITE_BACKEND_PORT}`;
+
   const [isRegistering, setIsRegistering] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
+
   const navigate = useNavigate();
   const { setUser } = useAuth();
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    toast.success("Utworzono konto! Możesz się zalogować!");
-    navigate("/");
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    try {
+      const payload = {
+        name,
+        surname,
+        email,
+        password,
+        role: "user",
+        phone: "123456789",
+      };
+      const res = await fetch(`${BACKEND_ADDRESS}/register`, {
+        method: "POST", 
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const errText = await res.text().catch(() => null);
+        toast.error(`Rejestracja nie powiodła się: ${errText || res.status}`);
+        return;
+      }
+
+      await res.json().catch(() => null);
+      toast.success("Utworzono konto! Możesz się zalogować!");
+      setIsRegistering(false);
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+      toast.error(`Wystąpił błąd, spróbuj ponownie później`);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const handleLogin = (e) => {
     e.preventDefault();
@@ -176,9 +213,10 @@ const LoginForm = () => {
 
           <button
             type="submit"
-            className="w-full py-3.5 font-bold text-zinc-950 bg-zinc-100 rounded-lg hover:bg-white hover:scale-[1.01] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-100 focus:ring-offset-zinc-900 transition-all shadow-lg"
+            disabled={isSubmitting}
+            className={`w-full py-3.5 font-bold text-zinc-950 bg-zinc-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-zinc-100 focus:ring-offset-zinc-900 transition-all shadow-lg ${isSubmitting ? "opacity-60 cursor-not-allowed hover:scale-100 hover:bg-zinc-100" : "hover:bg-white hover:scale-[1.01]"}`}
           >
-            Utwórz konto
+            {isSubmitting ? "Rejestrowanie..." : "Utwórz konto"}
           </button>
 
           <p className="text-center text-zinc-500 mt-8 text-sm">
